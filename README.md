@@ -49,7 +49,8 @@ proportions kept, the axis of rotation on its **right edge**. The real size of e
 (height, maximum width, rim diameter, capacity, outer surface), computed when the dataset was built.
 
 ![The profiles as a model sees them](assets/aippd_masks.png)
-<sub>Twenty-four random profiles, as stored (256 × 256).</sub>
+<sub>Twenty-four random profiles (256 × 256), drawn with a smoothing network that removes the pixel steps of the
+outline; the data themselves are binary.</sub>
 
 ## Coverage
 

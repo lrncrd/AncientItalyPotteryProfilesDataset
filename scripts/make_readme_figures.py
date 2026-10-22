@@ -106,8 +106,8 @@ def drawing_and_vessel(meta, masks):
     sel = ((meta["height_cm"] > 7) & (meta["height_cm"] < 40)).values
     ids = [typical(meta, sel & (meta["height_cm"].between(lo, hi)).values, 1, seed=k)[0]
            for k, (lo, hi) in enumerate(((7, 9), (9, 12), (12, 16), (16, 22), (22, 30), (30, 40)))]
-    fig, axes = plt.subplots(1, 6, figsize=(13, 2.9))
-    for ax, i in zip(axes, ids):
+    fig, axes = plt.subplots(2, 3, figsize=(10.5, 4.6))
+    for ax, i in zip(axes.ravel(), ids):
         ax.axis("off")
         pot = physical(masks[i], meta["height_cm"][i])
         pts = outline(pot)
@@ -124,22 +124,32 @@ def drawing_and_vessel(meta, masks):
         w = H * img.shape[1] / img.shape[0]
         ax.imshow(img, extent=(R * 1.3, R * 1.3 + w, 0, H))
         ax.set_xlim(-R * 1.1, R * 1.3 + w)
-        ax.set_ylim(-0.16 * H, 1.06 * H)
+        ax.set_ylim(-0.2 * H, 1.04 * H)
         ax.set_aspect("equal")
         ax.text(0, -0.12 * H, f"{meta['period'][i]} · {meta['height_cm'][i]:.0f} cm", ha="center", va="top", fontsize=8,
                 color=INK_2)
-    fig.subplots_adjust(left=0.01, right=0.99, top=0.98, bottom=0.04, wspace=0.05)
+    fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01, wspace=0.05, hspace=0.02)
     fig.savefig(ASSETS / "aippd_drawing_to_vessel.png", facecolor="white")
     plt.close(fig)
 
 
 def masks_grid(meta, masks):
-    """The data as a model sees it: 256 x 256 binary profiles."""
+    """The data as a model sees it: 256 x 256 binary profiles, drawn through the smoothing network of Reconstructor
+    (potfm/superres.py: the outline at 4x the resolution, without the 1-pixel steps; display only, the data are binary)."""
+    from potfm import superres
+    net = superres.load()
     rng = np.random.default_rng(1)
     ids = rng.choice(len(masks), 24, replace=False)
     fig, axes = plt.subplots(3, 8, figsize=(12, 4.6))
     for ax, i in zip(axes.ravel(), ids):
-        ax.imshow(masks[i], cmap="gray_r", interpolation="nearest")
+        # at the corpus' physical scale (1.5 mm/px), where the network was trained, then fitted back to a square cell
+        f = superres.field(physical(masks[i], meta["height_cm"][i]), net)
+        img = np.clip(f * superres.SCALE + 0.5, 0, 1)
+        side = int(max(img.shape) * 1.02)
+        cell = np.zeros((side, side), np.float32)
+        y0, x0 = (side - img.shape[0]) // 2, side - img.shape[1] - (side - img.shape[0]) // 2 // 2
+        cell[y0:y0 + img.shape[0], max(x0, 0):max(x0, 0) + img.shape[1]] = img[:, :side - max(x0, 0)]
+        ax.imshow(cell, cmap="gray_r", interpolation="bilinear", vmin=0, vmax=1)
         ax.set_xticks([])
         ax.set_yticks([])
         for s in ax.spines.values():
