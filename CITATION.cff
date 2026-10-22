@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite the book of which it is Appendix A (preferred citation) and this repository."
+title: "AIPPD: Ancient Italy Pottery Profiles Dataset"
+version: "0.1"
+type: dataset
+authors:
+  - family-names: Cardarelli
+    given-names: Lorenzo
+    orcid: "https://orcid.org/0000-0002-2436-9967"
+repository-code: "https://github.com/lrncrd/AncientItalyPotteryProfilesDataset"
+url: "https://edipuglia.it/pasap01/index.html"
+keywords:
+  - archaeology
+  - pottery
+  - ceramic profiles
+  - Italy
+  - Bronze Age
+  - Iron Age
+  - machine learning
+  - dataset
+preferred-citation:
+  type: book
+  authors:
+    - family-names: Cardarelli
+      given-names: Lorenzo
+      orcid: "https://orcid.org/0000-0002-2436-9967"
+  title: "Morphological variability and standardisation of vessel shapes in the 2nd and first half of the 1st millennium BC in continental Italy. A data science and machine learning project for the quantitative study of archaeological ceramic profiles"
+  collection-title: "Adrias"
+  volume: 18
+  publisher:
+    name: Edipuglia
+    city: Bari
+  year: 2024
+  isbn: "979-12-5995-084-0"
+  doi: "10.4475/0840"
