@@ -131,6 +131,21 @@ on every profile).
 | `height_cm`, `max_width_cm`, `rim_diameter_cm` | height, maximum width (from the axis to the outer profile, doubled) and inner rim diameter |
 | `capacity_l`, `outer_surface_m2` | capacity (stacked cylinders on the inner profile) and outer surface |
 
+## Installation
+
+Nothing is published on PyPI: clone or download the repository and use it from its folder.
+
+```bash
+git clone https://github.com/lrncrd/AncientItalyPotteryProfilesDataset.git
+cd AncientItalyPotteryProfilesDataset
+pip install numpy pandas scipy          # the loader, aippd.py (add pyarrow and pillow for the parquet file)
+pip install -e appendix_a/aippa         # optional: AIPPA, the analysis library of the book
+```
+
+AIPPA declares no dependencies of its own; it uses numpy, scipy, pandas, scikit-learn, scikit-image, matplotlib,
+seaborn, plotly, bokeh, umap-learn, hdbscan, pyefd, tqdm, pillow and geopandas. The environment of the book (Python 3.9)
+is in `appendix_a/aippa/aippa_dev_dependencies.yml`.
+
 ## Quick start
 
 ```python
