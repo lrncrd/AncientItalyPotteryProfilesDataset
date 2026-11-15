@@ -241,12 +241,5 @@ and, if you use the files of this repository, the repository itself (see `CITATI
 ## Licence
 
 The code (`aippd.py`, `scripts/`, `appendix_a/aippa/`) is released under the Apache License 2.0 (`LICENSE`).
-**[TO CONFIRM: licence of the data, e.g. CC BY 4.0.]** The drawings the profiles were traced from remain the work of
-their authors and publishers; see `data/aippd_bibliography.csv` for the sources.
+The drawings the profiles were traced from remain the work of their authors and publishers; see `data/aippd_bibliography.csv` for the sources.
 
-## Acknowledgements
-
-The dataset was built during the author's PhD at the University of Bari Aldo Moro (PASAP_Med, XXXVI cycle), tutor
-Prof. Marco Bettelli, co-tutors Prof. Andrea Cardarelli and Prof. Paola Moscati. The 3D renderings on this page were
-made with the renderer of the [Reconstructor](https://github.com/lrncrd/Reconstructor) project; the map uses
-[Natural Earth](https://www.naturalearthdata.com/) boundaries.
