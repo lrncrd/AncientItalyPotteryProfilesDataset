@@ -12,11 +12,11 @@ def GeoPlot(geodf_joined, title= None):
 
 
 
-    fig = px.scatter_mapbox(geo_df,
+    fig = px.scatter_map(geo_df,
                             lat=geo_df["y"], 
                             lon=geo_df["x"],
                             center={"lat": np.mean(geo_df.geometry.y), "lon": np.mean(geo_df.geometry.x)},
-                            mapbox_style="open-street-map",
+                            map_style="open-street-map",
                             zoom=4.5,
                             hover_name="site",
                             hover_data={"site": False, "x": False, "y": False,  

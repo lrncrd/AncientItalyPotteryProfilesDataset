@@ -441,7 +441,7 @@ class PotDataset:
 
 
     def __getitem__(self, idx):
-        return self.images[idx].A.reshape((-1, self.img_size, self.img_size)).squeeze()
+        return self.images[idx].toarray().reshape((-1, self.img_size, self.img_size)).squeeze()
 
 
     def __len__(self):

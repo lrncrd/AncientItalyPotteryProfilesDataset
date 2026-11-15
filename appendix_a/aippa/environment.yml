@@ -1,0 +1,29 @@
+# AIPPA on Python 3.12, with the versions it was tested with (2026-11-15).
+#   conda env create -f appendix_a/aippa/environment.yml
+#   conda activate aippa
+#   pip install -e appendix_a/aippa
+name: aippa
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - numpy==2.5.4
+      - scipy==1.18.1
+      - pandas==3.1.1
+      - openpyxl==3.1.5
+      - scikit-learn==1.9.1
+      - scikit-image==0.26.0
+      - matplotlib==3.11.2
+      - seaborn==0.13.2
+      - plotly==7.1.0
+      - bokeh==3.10.2
+      - umap-learn[plot]==0.6.0
+      - hdbscan==0.8.44
+      - pyefd==1.8.0
+      - tqdm==4.70.1
+      - pillow==13.0.0
+      - geopandas==1.2.0
+      - ipykernel==7.4.0
+      - nbformat==5.11.1

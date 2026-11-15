@@ -175,10 +175,11 @@ class PrincipalComponentAnalysis(decomposition.PCA):
         if not isinstance(self.x, np.ndarray):
             raise ValueError("PlotEigenPots needs numpy.ndarray as features")
 
-        if self.x[0].shape != np.sqrt(self.x[0].shape)**2:
+        n_features = self.x.shape[1]
+        shape = int(round(np.sqrt(n_features)))
+        if shape * shape != n_features:
             raise ValueError("PlotEigenPots needs squared matrix (use Vectorization as features extraction method)")
 
-        shape = int(np.sqrt(self.x[0].shape))
         num_components = len(self.method.explained_variance_ratio_)
         num_cols = int(np.sqrt(num_components))
         num_rows = int(np.ceil(num_components / num_cols))

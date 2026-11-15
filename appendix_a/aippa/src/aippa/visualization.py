@@ -174,7 +174,7 @@ def ScatterImage(reduced, info_selected, potds, hue="black", title = "ScatterIma
         for h in hue.unique():
             selected_hue = plot_df.loc[plot_df[hue.name] == h]
             datasource = ColumnDataSource(selected_hue)
-            plot_figure.circle(
+            plot_figure.scatter(
             'x',
             'y',
             source=datasource,
@@ -185,7 +185,7 @@ def ScatterImage(reduced, info_selected, potds, hue="black", title = "ScatterIma
             size=point_size)
     else:
         datasource = ColumnDataSource(plot_df)
-        plot_figure.circle(
+        plot_figure.scatter(
         'x',
         'y',
         source=datasource,

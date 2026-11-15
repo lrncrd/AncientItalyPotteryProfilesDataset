@@ -103,7 +103,7 @@ Absolute dates after Bartoloni 2012, Pacciarelli 2000 and Peroni 1994, as summar
 | `data/aippd_sites.geojson` | 0.1 MB | the contexts as points (WGS84), with `context_id` and number of vessels |
 | `data/gis/sites.*` | 0.2 MB | the original shapefile of the contexts (WGS 84 / UTM 33N) |
 | `aippd.py` | | a minimal loader (numpy and pandas) |
-| `appendix_a/aippa/` | | AIPPA, the analysis library of the book, as published in Appendix A (now developed as [PyPottery](https://github.com/lrncrd/PyPottery)) |
+| `appendix_a/aippa/` | | AIPPA, the analysis library of the book, from Appendix A, updated to Python 3.12 (now developed as [PyPottery](https://github.com/lrncrd/PyPottery)) |
 | `scripts/` | | how the files above and the figures of this page were made |
 
 The bit-packed masks take 5 MB instead of the 156 MB of the original sparse matrix; the conversion is lossless (checked
@@ -133,18 +133,17 @@ on every profile).
 
 ## Installation
 
-Nothing is published on PyPI: clone or download the repository and use it from its folder.
+Clone or download the repository and install from its folder (Python 3.12):
 
 ```bash
 git clone https://github.com/lrncrd/AncientItalyPotteryProfilesDataset.git
 cd AncientItalyPotteryProfilesDataset
 pip install numpy pandas scipy          # the loader, aippd.py (add pyarrow and pillow for the parquet file)
-pip install -e appendix_a/aippa         # optional: AIPPA, the analysis library of the book
+pip install -e appendix_a/aippa         # optional: AIPPA, the analysis library of the book, with its dependencies
 ```
 
-AIPPA declares no dependencies of its own; it uses numpy, scipy, pandas, scikit-learn, scikit-image, matplotlib,
-seaborn, plotly, bokeh, umap-learn, hdbscan, pyefd, tqdm, pillow and geopandas. The environment of the book (Python 3.9)
-is in `appendix_a/aippa/aippa_dev_dependencies.yml`.
+AIPPA is meant to be used in Jupyter. `appendix_a/aippa/environment.yml` gives a conda environment with the versions it
+was tested with (`conda env create -f appendix_a/aippa/environment.yml`, then the second `pip install` above).
 
 ## Quick start
 
